@@ -47,7 +47,7 @@ public class Queens {
 
                 //если королев меньше 8 попробовать поставить еще одну
                 if (queensPlaced < 7) {
-                    //комируем "доску"
+                    //копируем "доску"
                     BitSet newUnavailableSquares = (BitSet) unavailableSquares.clone();
                     //на копии ставим единицы туда, где текущая королева блокирует клетки
                     makeSquaresUnavailable(x, y, newUnavailableSquares);
