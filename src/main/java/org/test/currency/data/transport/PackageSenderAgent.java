@@ -23,11 +23,11 @@ public class PackageSenderAgent implements PackageSenderService {
         log(waitingToSend != null ?
                 name + " current pending package " + textBlue("updated ") + waitingToSend.getData() + " -> " + data.getData() :
                 name + textBlue(" received") + " new package to be sent: " + data.getData());
-        waitingToSend = data;
+            waitingToSend = data;
 
         if (senderAgent.isDone()) {
-            sending = waitingToSend;
-            waitingToSend = null;
+                sending = waitingToSend;
+                waitingToSend = null;
             log(name + textYellow(" started") + " sending package: " + sending.getData());
             senderAgent = CompletableFuture.runAsync(() -> sending.getReceiver().onPrice(sending.getData()));
         } else {
@@ -40,9 +40,11 @@ public class PackageSenderAgent implements PackageSenderService {
                         } catch (InterruptedException ignore) {
                         }
                     }
-                    sending = waitingToSend;
-                    waitingToSend = null;
-                    log(textCyan("Manager told") + name + " to deliver " + textYellow("next package ") + sending.getData());
+                    synchronized (this) {
+                        sending = waitingToSend;
+                        waitingToSend = null;
+                    }
+                    log(textCyan("Manager told ") + name + " to deliver " + textYellow("next package ") + sending.getData());
                     senderAgent = CompletableFuture.runAsync(() -> sending.getReceiver().onPrice(sending.getData()));
                 });
             } else {

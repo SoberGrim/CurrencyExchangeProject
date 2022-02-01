@@ -1,12 +1,12 @@
 package org.test.currency.data.listener;
 
-import org.test.currency.data.monitor.PriceProcessor;
+import org.test.currency.data.monitor.PriceMonitor;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.test.currency.utils.CLog.log;
 
-public class PriceConsumer implements PriceListener {
+public class PriceConsumer implements PriceProcessor {
     private final String name;
     private final int incomingDataDelaySec;
 
@@ -16,7 +16,7 @@ public class PriceConsumer implements PriceListener {
     }
 
     @Override
-    public void subscribe(PriceProcessor subscription) {
+    public void subscribe(PriceMonitor subscription) {
         subscription.subscribe(this);
     }
 

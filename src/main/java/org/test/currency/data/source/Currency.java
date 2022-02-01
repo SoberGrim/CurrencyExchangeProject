@@ -44,7 +44,7 @@ public class Currency {
             long timePassedSincePriceUpdate = System.currentTimeMillis() - lastPriceUpdateTime;
             long timePassedSincePricePublished = System.currentTimeMillis() - lastPricePublishTime;
             lastPricePublishTime = System.currentTimeMillis();
-            return String.format("%s%s\\RUB %.2f%c changed: %dms ago (last read: %dms ago)\u001B[0m", color, name, priceInRub, sign, timePassedSincePriceUpdate, timePassedSincePricePublished);
+            return String.format("%s%s\\RUB %.2f%c changed: %dms ago (last published: %dms ago)\u001B[0m", color, name, priceInRub, sign, timePassedSincePriceUpdate, timePassedSincePricePublished);
         }
         return String.format("%s%s\\RUB %.2f%c\u001B[0m", color, name, priceInRub, sign);
     }

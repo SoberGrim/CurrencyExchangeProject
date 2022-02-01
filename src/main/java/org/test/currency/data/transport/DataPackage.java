@@ -1,12 +1,12 @@
 package org.test.currency.data.transport;
 
-import org.test.currency.data.listener.PriceListener;
+import org.test.currency.data.listener.PriceProcessor;
 
 public class DataPackage {
     private final String data;
-    private final PriceListener receiver;
+    private final PriceProcessor receiver;
 
-    public DataPackage(String data, PriceListener receiver) {
+    public DataPackage(String data, PriceProcessor receiver) {
         this.data = data;
         this.receiver = receiver;
     }
@@ -15,7 +15,7 @@ public class DataPackage {
         return data;
     }
 
-    public PriceListener getReceiver() {
+    public PriceProcessor getReceiver() {
         return receiver;
     }
 }
