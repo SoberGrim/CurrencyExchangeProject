@@ -33,7 +33,7 @@ public class Starter {
         //В режиме verbose = true дополнительно сообщает об изменениях курсов в консоль
         PriceMonitor stockExchange = new PriceThrottler("Moscow Exchange",false, eur, usd);
 
-        //клиенты биржи. ПОлучают от биржи курс, при получении "думают" incomingDelay секунд, после печатают курс в консоль
+        //клиенты биржи. Получают от биржи курс, при получении "думают" incomingDelay секунд, после печатают курс в консоль
         // new PriceConsumer("Times",31).subscribe(stockExchange);
         new PriceConsumer("CNN",7).subscribe(stockExchange);
 
